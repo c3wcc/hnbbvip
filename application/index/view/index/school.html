@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>填写用户信息</title>
+    <link href="/public/assets/css/weui.min.css" rel="stylesheet" />
+    <script src="/public/assets/js/jquery-1.10.2.min.js"></script>
+</head>
+<style type="text/css">
+    body {
+        background-color: #efeff4;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none
+    }
+</style>
+
+<body>
+    <form method="post" id="form" action="/index.php/index/index/school_post">
+        <div class="weui-cells__title">请根据学校所在地，选择你所在的学校</div>
+        <div class="weui-cells">
+            <div class="weui-cell weui-cell_select">
+                <div class="weui-cell__bd">
+                    <select class="weui-select" name="province" id="province">
+                        {volist name="province" id="v"}
+                        <option value="{$v.province}">{$v.province}</option>
+                        {/volist}
+                    </select>
+                </div>
+            </div>
+
+            <div class="weui-cell weui-cell_select">
+                <div class="weui-cell__bd">
+                    <select class="weui-select" name="city" id="city">
+                        <option selected="" value="0">城市</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="weui-cell weui-cell_select">
+                <div class="weui-cell__bd">
+                    <select class="weui-select" name="school" id="school">
+                        <option selected="" value="0" name="school">学校</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells__title">找不到？请切换 （总校/总部） 所在的城市</div>
+
+        <div class="weui-msg__opr-area">
+            <p class="weui-btn-area">
+                <a href="javascript:submit();" class="weui-btn weui-btn_primary">提交</a>
+            </p>
+        </div>
+    </form>
+
+
+    <div class="weui-cells__title">热门学校：直接点击学校即可 选择该学校</div>
+
+
+    {foreach name="school_list" item="v"}
+    
+        <form method="post" action="/index.php/index/index/school_post">
+            <div class="weui-msg__opr-area">
+                <p class="weui-btn-area">
+                    <input type="hidden" value="{$v.school}" name="school">
+                    <button type="submit" class="weui-btn weui-btn_plain-default">{$v.name}</button>
+                </p>
+            </div>
+        </form>
+
+    {/foreach}
+
+
+    <!-- 已经毕业选项 -->
+    <form method="post" action="/index.php/index/index/school_post">
+        <div class="weui-msg__opr-area">
+            <p class="weui-btn-area">
+                <input type="hidden" value="4444" name="school">
+                <button type="submit" class="weui-btn weui-btn_plain-default">我已经毕业了</button>
+            </p>
+        </div>
+    </form>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#province').change(function () {
+                var province = $(this).children('option:selected').val(); //这就是selected的值 
+                $.get("/index.php/api/index/get_city?province=" + province, function (result) {
+                    var json = $.trim(result);
+                    $("#city").html("<option value='0'>请选择城市</option>");
+                    $("#school").html("<option value='0' name='school'>请选择学校</option>");
+                    $.each(JSON.parse(json),
+                        function (index, content) {
+                            var cc = "<option value='" + content.city + "'>" + content.city + "</option>";
+                            $("#city").append(cc);
+                        });
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var province1 = $('#province').children('option:selected').val(); //这就是selected的值 
+            $.get("/index.php/api/index/get_city?province=" + province1, function (result) {
+                var json = $.trim(result);
+                $("#city").html("<option value='0'>请选择城市</option>");
+                $("#school").html("<option value='0'name='school'>请选择学校</option>");
+                $.each(JSON.parse(json),
+                    function (index, content) {
+                        var cc = "<option value='" + content.city + "'>" + content.city +
+                            "</option>";
+                        $("#city").append(cc);
+                    });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#city').change(function () {
+                var city = $(this).children('option:selected').val(); //这就是selected的值 
+                $.get("/index.php/api/index/get_school?city=" + city, function (result) {
+                    var json = $.trim(result);
+                    $("#school").html("<option value='0' name='school'>请选择学校</option>");
+                    $.each(JSON.parse(json),
+                        function (index, content) {
+                            var ccc = "<option value='" + content.id + "' name='school'>" +
+                                content.name + "</option>";
+                            $("#school").append(ccc);
+                        });
+                });
+            });
+        });
+    </script>
+
+    <script>
+        function submit(){
+            var school = $("#school").val();
+    
+            if(school == 0){
+                alert("请选择学校");
+                return false;
+            }
+
+            $("#form").submit();
+        }
+    </script>
+
+    <div style="display: none;">
+        <script src="https://s19.cnzz.com/z_stat.php?id=3790269&web_id=3790269" language="JavaScript"></script>
+    </div>
+</body>
+
+</html>

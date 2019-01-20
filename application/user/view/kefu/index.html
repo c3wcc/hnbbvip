@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>联系客服</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link rel="stylesheet" href="/public/assets/css/weui.min.css" />
+    <link rel="stylesheet" href="/public/assets/css/laodong.css" />
+
+</head>
+
+
+<style>
+    .center {
+        text-align: center;
+    }
+</style>
+<style>
+    @media only screen and (min-width: 1200px) {
+        .blog-g-fixed {
+            max-width: 1200px;
+        }
+    }
+
+    @media only screen and (min-width: 641px) {
+        .blog-sidebar {
+            font-size: 1.4rem;
+        }
+    }
+
+    .blog-main {
+        padding: 20px 0 20px 2px;
+    }
+
+    .blog-title {
+        margin-bottom: 10px;
+        line-height: 1.4;
+        font-weight: 400;
+        font-size: 24px
+    }
+
+    .blog-meta {
+        font-size: 14px;
+        margin: 10px 0 20px 0;
+        color: #222;
+    }
+
+    .blog-meta a {
+        color: #27ae60;
+    }
+
+    .blog-pagination a {
+        font-size: 1.4rem;
+    }
+
+    .blog-team li {
+        padding: 4px;
+    }
+
+    .blog-team img {
+        margin-bottom: 0;
+    }
+
+    .blog-footer {
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .rich_media_meta_text {
+        color: #8c8c8c
+    }
+
+    span.rich_media_meta_nickname {
+        display: none
+    }
+
+    .rich_media_meta_list {
+        margin-bottom: 18px;
+        line-height: 20px;
+        font-size: 0
+    }
+
+    .rich_media_meta_list em {
+        font-style: normal
+    }
+
+    .rich_media_meta {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+        margin-bottom: 10px;
+        font-size: 16px
+    }
+
+    .meta_original_tag {
+        display: inline-block;
+        vertical-align: middle;
+        padding: 1px .5em;
+        border: 1px solid #9e9e9e;
+        color: #8c8c8c;
+        border-radius: 20% 50%;
+        -moz-border-radius: 20% 50%;
+        -webkit-border-radius: 20% 50%;
+        font-size: 15px;
+        line-height: 1.1
+    }
+
+    .meta_original_tag {
+        border: hidden;
+        padding-left: 0;
+    }
+
+    .page__bd {
+        padding: 10px;
+    }
+
+    .rich_media_meta_list {
+        padding: 10px 0px;
+        margin-bottom: 0;
+
+    }
+
+    .rich_media_meta_text {
+        padding-top: 10px;
+    }
+
+    .title {
+        display: flex;
+       
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+
+    .title-img {
+        width: 98%;
+        height: 38px;
+    }
+
+    .content {
+        border: 1px solid #9FD8F6;
+        border-radius: 4px;
+    }
+
+    .content-footer {
+        float: right;
+        margin-top: -20px;
+        margin-right: 10px;
+    }
+
+    .code {
+        border: 1px solid #333333;
+        border-radius: 4px;
+        margin-top: 30px;
+    }
+
+    .code-inside {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .read {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .dianzan {
+        display: flex;
+        align-items: center;
+    }
+
+    .say {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #F2F2F2;
+    }
+
+    #zan {
+        width: 20px;
+        height: 20px;
+    }
+</style>
+
+<body style="background-color: #ffffff;">
+
+    <div class="page__bd">
+        <section>
+            <h1 class="title">
+                <div class="am-article-title blog-title">联系客服</div>
+            </h1>
+            <span id="copyright_logo" class="rich_media_meta meta_original_tag">原创：MK</span>
+            <span class="rich_media_meta rich_media_meta_text" style="color:#595F6C;">百校生活</span>
+            <em class="rich_media_meta rich_media_meta_text">2018-11-3</em>
+            <div class="title">
+                <img src="/public/static/icon/fabang.gif" class="title-img" />
+            </div>
+            <section>
+            
+                <div class="content">
+                    <div style="padding:10px;">
+
+
+                       
+                        {$shuoming}
+
+
+                    </div>
+                </div>
+               
+                <div class="code">
+                    <div class="code-inside">
+                        <h1 style="color:red;">百校生活</h1>
+                        <img src="/public/static/kefu/baixiao.jpg" style="margin:10px 0px;" />
+                        <span style="background: #333333;color:#ffff;padding:10px 20px;">长按加入百校生活</span>
+                    </div>
+                </div>
+
+            </section>
+            <div class="read">
+                <div class="rich_media_meta_list">
+                    <em class="rich_media_meta rich_media_meta_text">阅读&nbsp;100000+</em>
+                </div>
+                <div class="dianzan">
+                    <img src="/public/static/icon/zan.png" id="zan" />
+                    <span style="color:#8694B3;" id="number">100000+</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="say">
+        <span style="color:#8694B3;">写留言</span>
+    </div>
+    <div style="display:none;">
+        <script src="https://s19.cnzz.com/z_stat.php?id=3790269&web_id=3790269" language="JavaScript"></script>
+    </div>
+   
+
+</body>
+
+</html>
