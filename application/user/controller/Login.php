@@ -18,9 +18,7 @@ class Login extends Controller
      */
     public function index()
     {
-        session('redirect_uri', input('redirect_uri'));
-        //这是上一页
-
+        
         //已经登录了
         $user = session("user");
         if ($user) {
@@ -31,7 +29,8 @@ class Login extends Controller
         if (is_weixin() == true) {
             
             $u = urlencode(SITE_URL."/user/login/check");
-            $wx_login = "/?redirect_uri=".$u;
+            $wx_login = CONFIG('account_url')."/?redirect_uri=".$u;
+            
             //微信强制跳转
             $this->redirect($wx_login);
             exit;

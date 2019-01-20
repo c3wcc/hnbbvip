@@ -18,7 +18,7 @@ return [
     //统计URL
     'analytics_api_url' => '',
 
-    //统计URL
+    //登录URL
     'account_url' => '',
 
     
